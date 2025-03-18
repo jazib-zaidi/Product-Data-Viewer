@@ -52,10 +52,12 @@ function App() {
     <div className='min-h-screen bg-gray-100 p-8'>
       <div className='max-w-7xl mx-auto'>
         <div className='bg-white rounded-lg shadow-sm p-6 mb-8'>
-          <h1 className='text-3xl font-bold mb-6'>
-            Magento Product Data Viewer (for https://www.dymocks.com.au/)
-          </h1>
-
+          <div className='d-flex flex-col items-center mb-6'>
+            <h1 className='text-3xl font-bold mb-6'>
+              Magento Product Data Viewer
+            </h1>
+            (https://www.dymocks.com.au/)
+          </div>
           <div className='flex gap-4 items-end mb-6'>
             <div className='flex-1'>
               <label className='block text-sm font-medium text-gray-700 mb-2'>
