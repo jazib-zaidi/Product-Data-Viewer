@@ -122,8 +122,12 @@ function App() {
             {product ? (
               <ProductCard product={product} />
             ) : (
-              <div className='text-center text-gray-500'>
-                fetch a product to view its details
+              <div className='d-flex justify-content-center align-items-center text-gray-500'>
+                <img
+                  className='m-auto w-[300px] h-[300px]'
+                  src='/7486744.png'
+                  alt='Centered Image'
+                />
               </div>
             )}
           </TabsContent>
@@ -131,8 +135,12 @@ function App() {
             {product ? (
               <DescriptionTemplate data={product} />
             ) : (
-              <div className='text-center text-gray-500'>
-                fetch a product to view
+              <div className='d-flex justify-content-center align-items-center text-gray-500'>
+                <img
+                  className='m-auto w-[300px] h-[300px]'
+                  src='/7486744.png'
+                  alt='Centered Image'
+                />
               </div>
             )}
           </TabsContent>
