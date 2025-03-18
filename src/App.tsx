@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { Search, Loader2 } from 'lucide-react';
 import { ProductData } from './types';
 import ProductCard from './components/ProductCard';
+import DescriptionTemplate from './components/DescriptionTemplate';
+import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 
 function App() {
   const [apiKey, setApiKey] = useState('x1k9qu01e1lvv60sj3kwhqtvs7hle928');
@@ -12,13 +14,9 @@ function App() {
 
   const fetchProduct = async (sku: string) => {
     try {
-      const response = await fetch(`/api/rest/V1/products/${sku}`, {
-        headers: {
-          'Authorization': `Bearer ${apiKey}`,
-          'Content-Type': 'application/json',
-          'Accept': 'application/json',
-        },
-      });
+      const response = await fetch(
+        `https://product-data-viewer-backend.onrender.com/api/products/${sku}`
+      );
 
       if (!response.ok) {
         throw new Error(`Failed to fetch product ${sku}`);
@@ -77,7 +75,7 @@ function App() {
 
             <div className='flex-1'>
               <label className='block text-sm font-medium text-gray-700 mb-2'>
-                Product SKU
+                Product Id
               </label>
               <input
                 type='text'
@@ -106,15 +104,42 @@ function App() {
               )}
             </button>
           </div>
-
           {error && (
             <div className='bg-red-50 text-red-700 p-4 rounded-md mb-6'>
               {error}
             </div>
           )}
         </div>
+        <Tabs defaultValue='tab1'>
+          <TabsList>
+            <TabsTrigger value='tab1'>Product Detail</TabsTrigger>
+            <TabsTrigger value='tab2'>Template PlayGround</TabsTrigger>
+          </TabsList>
 
-        {product && <ProductCard product={product} />}
+          <TabsContent value='tab1'>
+            {product ? (
+              <ProductCard product={product} />
+            ) : (
+              <div className='text-center text-gray-500'>
+                fetch a product to view its details
+              </div>
+            )}
+          </TabsContent>
+          <TabsContent value='tab2'>
+            {product ? (
+              <DescriptionTemplate data={product} />
+            ) : (
+              <div className='text-center text-gray-500'>
+                fetch a product to view
+              </div>
+            )}
+          </TabsContent>
+        </Tabs>
+
+        <footer className='text-center mt-8 text-sm text-gray-500'>
+          {' '}
+          Magento Product Data Viewer by feedOps
+        </footer>
       </div>
     </div>
   );
