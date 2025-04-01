@@ -19,7 +19,6 @@ export default function ProductDisplay({ domain, productData }) {
     }
   };
 
-  // Initialize state for selected variant
   const [selectedVariantId, setSelectedVariantId] = useState(
     product?.variants?.[0]?.id || null
   );
@@ -28,7 +27,6 @@ export default function ProductDisplay({ domain, productData }) {
     (variant) => variant.id === selectedVariantId
   );
 
-  // If no product data is available, show a user-friendly message
   if (!hasData) {
     return (
       <div className=''>
@@ -98,14 +96,12 @@ export default function ProductDisplay({ domain, productData }) {
 
       const parsedContent = JSON.parse(richTextValue);
 
-      // Handle rich_text_field format
       if (
         parsedContent.type === 'root' &&
         Array.isArray(parsedContent.children)
       ) {
         let html = '';
 
-        // Process the nodes to build HTML
         const processNode = (node) => {
           if (node.type === 'paragraph') {
             return `<p>${node.children.map(processNode).join('')}</p>`;
@@ -139,7 +135,6 @@ export default function ProductDisplay({ domain, productData }) {
         return <div dangerouslySetInnerHTML={{ __html: html }} />;
       }
 
-      // Handle rating object
       if (
         parsedContent.value &&
         parsedContent.scale_min &&
@@ -154,14 +149,12 @@ export default function ProductDisplay({ domain, productData }) {
         );
       }
 
-      // Handle other JSON structures
       return (
         <pre className='text-xs whitespace-pre-wrap'>
           {JSON.stringify(parsedContent, null, 2)}
         </pre>
       );
     } catch (e) {
-      // If parsing fails, return the original value
       return richTextValue;
     }
   };
@@ -171,7 +164,6 @@ export default function ProductDisplay({ domain, productData }) {
       return <p className='text-gray-500 italic'>No metafields available</p>;
     }
 
-    // Group metafields by namespace for better organization
     const groupedMetafields = metafields.reduce((acc, metafield) => {
       const namespace = metafield.namespace || 'other';
       if (!acc[namespace]) acc[namespace] = [];
@@ -197,7 +189,7 @@ export default function ProductDisplay({ domain, productData }) {
                 >
                   <div className='flex justify-between items-center mb-2'>
                     <h3 className='font-medium text-blue-600'>
-                      {metafield.key}
+                      Attribute - {metafield.key}
                     </h3>
                     <span className='text-xs px-2 py-1 bg-gray-100 rounded-full'>
                       {metafield.type}
@@ -251,14 +243,12 @@ export default function ProductDisplay({ domain, productData }) {
                                       <span>{jsonData.total_star5}</span>
                                     </div>
                                   )}
-                                  {/* More star ratings could be added here */}
                                 </div>
                               );
                             } else if (
                               jsonData.list &&
                               Array.isArray(jsonData.list)
                             ) {
-                              // This is likely a reviews list
                               return (
                                 <div>
                                   <p className='text-sm text-gray-500 mb-2'>
@@ -416,7 +406,6 @@ export default function ProductDisplay({ domain, productData }) {
 
   return (
     <div ref={contentRef} className=''>
-      {/* Product Header */}
       <div className='bg-white rounded-lg shadow-md overflow-hidden mb-6'>
         <div className='relative'>
           {product.image && (
@@ -439,7 +428,7 @@ export default function ProductDisplay({ domain, productData }) {
               }`}
             >
               <h1 className='text-3xl font-bold mb-2'>
-                Title : {product.title || 'Untitled Product'}
+                Attribute - Title : {product.title || 'Untitled Product'}
               </h1>
               <div className='flex items-center gap-2 mb-2'>
                 {product.metafields?.find((mf) => mf.key === 'rating') && (
@@ -484,7 +473,7 @@ export default function ProductDisplay({ domain, productData }) {
         </div>
 
         <div className='p-6'>
-          <b>Description :</b>
+          <b>Attribute - Description :</b>
           {product.body_html ? (
             <div
               className='mb-4 prose max-w-none bg-gray-50 p-3 rounded'
@@ -504,7 +493,7 @@ export default function ProductDisplay({ domain, productData }) {
             </p>
             {product.tags && (
               <p className='text-sm  bg-gray-50 p-3'>
-                <b>Tags: </b>
+                <b>Attribute Tags: </b>
                 <span className='text-gray-800 font-medium'>
                   {product.tags}
                 </span>
@@ -514,7 +503,6 @@ export default function ProductDisplay({ domain, productData }) {
         </div>
       </div>
 
-      {/* Variant Selector */}
       {product.variants && product.variants.length > 0 ? (
         <div className='bg-white rounded-lg shadow-md p-6 mb-6'>
           <h2 className='text-xl font-bold mb-4'>Available Variants</h2>
@@ -568,10 +556,8 @@ export default function ProductDisplay({ domain, productData }) {
         </div>
       )}
 
-      {/* Selected Variant Details */}
       {renderVariantDetails(selectedVariant)}
 
-      {/* Product Metafields */}
       <div className='bg-white rounded-lg shadow-md p-6 mb-6'>
         <h2 className='text-xl font-bold mb-4'>Product Metafields</h2>
         {renderMetafields(productData?.data?.metafields)}
@@ -583,7 +569,7 @@ export default function ProductDisplay({ domain, productData }) {
       >
         {loading ? 'Downloading...' : 'Download as PDF'}
       </button>
-      {/* Product Images */}
+
       {product.images && product.images.length > 0 ? (
         <div className='bg-white rounded-lg shadow-md p-6'>
           <h2 className='text-xl font-bold mb-4'>All Product Images</h2>
