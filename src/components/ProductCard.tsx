@@ -7,11 +7,13 @@ interface ProductCardProps {
 
 const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   return (
-    <div className='bg-white rounded-lg shadow-lg overflow-hidden'>
+    <div
+      id='data-view'
+      className='bg-white rounded-lg shadow-lg overflow-hidden'
+    >
       <div className='p-6'>
         <h2 className='text-2xl font-bold mb-6'>Title : {product.name}</h2>
 
-        {/* Basic Information */}
         <div className='space-y-6'>
           <div className='border-b pb-4'>
             <h3 className='text-lg font-semibold mb-3'>Basic Information</h3>
