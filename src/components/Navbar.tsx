@@ -21,7 +21,6 @@ const Navbar = () => {
             <span className='text-xl font-bold bg-gradient-to-tl from-slate-800 via-violet-500 to-zinc-400 bg-clip-text text-transparent'>
               DataBridge
             </span>{' '}
-            <span className='italic text-xs'>by feedOps</span>
           </span>
         </Link>
         <div className='flex items-center gap-4'>

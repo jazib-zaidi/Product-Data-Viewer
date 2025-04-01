@@ -20,7 +20,7 @@ const App = () => {
           <div className='flex items-center gap-2'>
             {/* <BarChart3 className='h-6 w-6 text-brand-blue' /> */}
             <span className='text-xl font-bold text-brand-navy'>
-              DataBridge <span className='italic text-xs'>by feedOps</span>
+              DataBridge
             </span>
           </div>
           <p className='text-sm text-muted-foreground'>
