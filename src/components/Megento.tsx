@@ -8,8 +8,9 @@ import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 
 function Magento() {
-  const [apiKey, setApiKey] = useState('x1k9qu01e1lvv60sj3kwhqtvs7hle928');
-  const [sku, setSku] = useState('9781760126759');
+  const [apiKey, setApiKey] = useState('');
+  const [sku, setSku] = useState('');
+  const [domain, setDomain] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [product, setProduct] = useState<ProductData | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -18,7 +19,7 @@ function Magento() {
   const fetchProduct = async (sku: string) => {
     try {
       const response = await fetch(
-        `https://product-data-viewer-backend.onrender.com/api/products/${sku}`
+        `https://product-data-viewer-backend.onrender.com/api/products/${sku}?api_key=${apiKey}&domain=${domain}`
       );
 
       if (!response.ok) {
@@ -97,9 +98,18 @@ function Magento() {
                 className='w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500'
                 placeholder='Enter your API key'
               />
-              <p className='mt-1 text-sm text-gray-500'>
-                Current API Key: {maskedApiKey}
-              </p>
+            </div>
+            <div className='flex-1'>
+              <label className='block text-sm font-medium text-gray-700 mb-2'>
+                Domain : (e.g - www.test.com.au)
+              </label>
+              <input
+                type='text'
+                value={domain}
+                onChange={(e) => setDomain(e.target.value)}
+                className='w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500'
+                placeholder='Enter domain e.g - www.xyz.com.au'
+              />
             </div>
 
             <div className='flex-1'>
@@ -117,7 +127,7 @@ function Magento() {
 
             <button
               onClick={handleFetchProduct}
-              disabled={isLoading}
+              disabled={isLoading || !apiKey || !domain || !sku}
               className='px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50 flex items-center gap-2 h-[42px]'
             >
               {isLoading ? (

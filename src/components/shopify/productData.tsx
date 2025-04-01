@@ -4,8 +4,7 @@ import html2pdf from 'html2pdf.js';
 export default function ProductDisplay({ domain, productData }) {
   const [loading, setLoading] = useState(false);
   const contentRef = useRef<HTMLDivElement>(null);
-  // Check if productData exists and has the expected structure
-  console.log(productData);
+
   const hasData = Boolean(productData?.data?.product?.id);
   const product = hasData ? productData.data.product : null;
 
