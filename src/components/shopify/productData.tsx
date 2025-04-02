@@ -13,8 +13,19 @@ export default function ProductDisplay({ domain, productData }) {
       setLoading(true);
 
       html2pdf()
+        .set({
+          margin: 10,
+          filename: `${domain}.pdf`,
+          image: { type: 'jpeg', quality: 1 }, // Ensures images are included properly
+          html2canvas: { scale: 2, useCORS: true, allowTaint: true }, // UseCORS ensures images load
+          jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }, // Ensures proper text rendering
+        })
         .from(contentRef.current)
-        .save(`${domain}.pdf`)
+        .toPdf()
+        .get('pdf')
+        .then((pdf) => {
+          pdf.save(`${domain}.pdf`);
+        })
         .finally(() => setLoading(false));
     }
   };

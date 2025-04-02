@@ -55,14 +55,15 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           <div className='border-b pb-4'>
             <h3 className='text-lg font-semibold mb-3'>Stock Information</h3>
             <div className='grid grid-cols-2 gap-4'>
-              {Object.entries(product.extension_attributes.stock_item).map(
-                ([key, value]) => (
-                  <div key={key}>
-                    <span className='font-medium'>{key}:</span>{' '}
-                    {value?.toString()}
-                  </div>
-                )
-              )}
+              {product?.extension_attributes?.stock_item &&
+                Object.entries(product?.extension_attributes?.stock_item).map(
+                  ([key, value]) => (
+                    <div key={key}>
+                      <span className='font-medium'>{key}:</span>{' '}
+                      {value?.toString()}
+                    </div>
+                  )
+                )}
             </div>
           </div>
 
