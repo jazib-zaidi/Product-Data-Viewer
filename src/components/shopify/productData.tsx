@@ -484,7 +484,7 @@ export default function ProductDisplay({ domain, productData }) {
         </div>
 
         <div className='p-6'>
-          <b>Attribute - Description :</b>
+          <b>Attribute - body_html :</b>
           {product.body_html ? (
             <div
               className='mb-4 prose max-w-none bg-gray-50 p-3 rounded'
@@ -508,6 +508,35 @@ export default function ProductDisplay({ domain, productData }) {
                 <span className='text-gray-800 font-medium'>
                   {product.tags}
                 </span>
+              </p>
+            )}
+            {product?.product_type && (
+              <span className='my-8'>
+                <b>Attribute - product_type: </b>{' '}
+                <span className=' px-2 py-1 bg-blue-400 rounded-full text-white'>
+                  {product.product_type}
+                </span>
+              </span>
+            )}
+            <ul>
+              {product?.options.length > 0 && (
+                <div className='my-4'>
+                  {product?.options.map(({ name, values }) => {
+                    return (
+                      <li className='my-4'>
+                        <b>Attribute - {name}</b> :{values}{' '}
+                      </li>
+                    );
+                  })}
+                </div>
+              )}
+            </ul>
+
+            {product?.vendor && (
+              <p>
+                {' '}
+                <b>Attribute Vendor: </b>
+                {product?.vendor}{' '}
               </p>
             )}
           </div>
