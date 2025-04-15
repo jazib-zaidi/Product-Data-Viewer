@@ -34,6 +34,11 @@ const Navbar = () => {
               Magento
             </Button>
           </Link>
+          <Link to='/salesforce' className='hidden sm:block'>
+            <Button variant='outline' size='sm'>
+              Salesforce
+            </Button>
+          </Link>
           <div className='hidden sm:flex items-center gap-1'>
             <Button
               variant='ghost'

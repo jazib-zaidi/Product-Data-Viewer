@@ -1,5 +1,5 @@
 import { useRef, useState } from 'react';
-import html2pdf from 'html2pdf.js';
+import { handleDownload } from '../../utils/pdfDownload';
 
 export default function ProductDisplay({ domain, productData }) {
   const [loading, setLoading] = useState(false);
@@ -7,28 +7,6 @@ export default function ProductDisplay({ domain, productData }) {
 
   const hasData = Boolean(productData?.data?.product?.id);
   const product = hasData ? productData.data.product : null;
-
-  const handleDownload = () => {
-    if (contentRef.current) {
-      setLoading(true);
-
-      html2pdf()
-        .set({
-          margin: 10,
-          filename: `${domain}.pdf`,
-          image: { type: 'jpeg', quality: 1 }, // Ensures images are included properly
-          html2canvas: { scale: 2, useCORS: true, allowTaint: true }, // UseCORS ensures images load
-          jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }, // Ensures proper text rendering
-        })
-        .from(contentRef.current)
-        .toPdf()
-        .get('pdf')
-        .then((pdf) => {
-          pdf.save(`${domain}.pdf`);
-        })
-        .finally(() => setLoading(false));
-    }
-  };
 
   const [selectedVariantId, setSelectedVariantId] = useState(
     product?.variants?.[0]?.id || null
@@ -603,7 +581,7 @@ export default function ProductDisplay({ domain, productData }) {
         {renderMetafields(productData?.data?.metafields)}
       </div>
       <button
-        onClick={handleDownload}
+        onClick={() => handleDownload(contentRef, setLoading, domain)}
         disabled={loading}
         className='sticky bottom-8 left-[10000px] bg-blue-500 text-white py-2 px-4 rounded-lg disabled:bg-gray-400 hover:bg-blue-600 transition'
       >

@@ -48,15 +48,20 @@ const PlatformSelector = () => {
       comingSoon: false,
     },
     {
-      id: 'bigcommerce',
-      name: 'BigCommerce',
-      description:
-        'Connect to your BigCommerce store and analyze your e-commerce metrics.',
-      icon: <Store className='h-6 w-6' />,
-      color: 'bg-[#34313F]',
-      textColor: 'text-[#34313F]',
-      route: '/bigcommerce',
-      comingSoon: true,
+      id: 'Salesforce',
+      name: 'Salesforce',
+      description: 'Connect to your Salesforce store.',
+      icon: (
+        <img
+          style={{ width: 60 }}
+          src='https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Salesforce.com_logo.svg/2560px-Salesforce.com_logo.svg.png'
+          alt=''
+        />
+      ),
+      // color: 'bg-[#34313F]',
+      textColor: 'text-[#00a2e0]',
+      route: '/salesforce',
+      comingSoon: false,
     },
     {
       id: 'woocommerce',
@@ -161,9 +166,7 @@ const PlatformSelector = () => {
             {hoveredPlatform === platform.id && (
               <div
                 className={`absolute top-4 right-4 ${platform.color} rounded-full p-1 text-white animate-fade-in`}
-              >
-                <CircleCheck className='h-5 w-5' />
-              </div>
+              ></div>
             )}
           </div>
         </Card>

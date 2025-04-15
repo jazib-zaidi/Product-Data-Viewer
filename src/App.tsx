@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Magento from './components/Megento';
+import SalesForce from './components/SalesForce';
 import Home from './components/Home';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
@@ -14,6 +15,7 @@ const App = () => {
         <Route path='/' element={<Home />} />
         <Route path='/magento' element={<Magento />} />
         <Route path='/shopify' element={<Shopify />} />
+        <Route path='/salesforce' element={<SalesForce />} />
       </Routes>
       <footer className='border-t py-6 md:py-8'>
         <div className='container flex flex-col items-center justify-center gap-4 text-center md:gap-8'>
