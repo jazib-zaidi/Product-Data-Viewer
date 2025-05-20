@@ -89,6 +89,47 @@ export default function ProductDataDisplay({ product }) {
         </h1>
 
         {/* Basic Information */}
+        <Section title='Product Images' id='images'>
+          {product.images.length > 0 ? (
+            <div>
+              <div className='grid grid-cols-2 md:grid-cols-4 gap-4 mb-6'>
+                {product.images.map((image) => (
+                  <div
+                    key={image.id}
+                    className='border border-gray-200 rounded overflow-hidden flex flex-col'
+                  >
+                    <div className='aspect-square bg-gray-100 overflow-hidden'>
+                      <img
+                        src={image.url_standard}
+                        alt={image.description || product.name}
+                        className='w-full h-full object-contain'
+                      />
+                    </div>
+                    <div className='p-2 bg-white text-sm'>
+                      <p className='font-medium text-gray-900'>
+                        {image.description || 'No description'}
+                      </p>
+                      <p className='text-gray-500 text-xs'>
+                        ID: {image.id} | Sort: {image.sort_order}
+                      </p>
+                      <p className='text-gray-500 text-xs truncate'>
+                        File: {image.image_file}
+                      </p>
+                      <p className='text-gray-500 text-xs'>
+                        {image.is_thumbnail ? 'Primary Thumbnail' : ''}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <div className='text-sm text-gray-500'>
+                Total Images: {product.images.length}
+              </div>
+            </div>
+          ) : (
+            <p className='text-gray-500'>No images available</p>
+          )}
+        </Section>
         <Section title='Basic Information' id='basics'>
           <div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
             <div>
@@ -180,47 +221,6 @@ export default function ProductDataDisplay({ product }) {
         </Section>
 
         {/* Images */}
-        <Section title='Product Images' id='images'>
-          {product.images.length > 0 ? (
-            <div>
-              <div className='grid grid-cols-2 md:grid-cols-4 gap-4 mb-6'>
-                {product.images.map((image) => (
-                  <div
-                    key={image.id}
-                    className='border border-gray-200 rounded overflow-hidden flex flex-col'
-                  >
-                    <div className='aspect-square bg-gray-100 overflow-hidden'>
-                      <img
-                        src={image.url_standard}
-                        alt={image.description || product.name}
-                        className='w-full h-full object-contain'
-                      />
-                    </div>
-                    <div className='p-2 bg-white text-sm'>
-                      <p className='font-medium text-gray-900'>
-                        {image.description || 'No description'}
-                      </p>
-                      <p className='text-gray-500 text-xs'>
-                        ID: {image.id} | Sort: {image.sort_order}
-                      </p>
-                      <p className='text-gray-500 text-xs truncate'>
-                        File: {image.image_file}
-                      </p>
-                      <p className='text-gray-500 text-xs'>
-                        {image.is_thumbnail ? 'Primary Thumbnail' : ''}
-                      </p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-              <div className='text-sm text-gray-500'>
-                Total Images: {product.images.length}
-              </div>
-            </div>
-          ) : (
-            <p className='text-gray-500'>No images available</p>
-          )}
-        </Section>
 
         {/* Description */}
         <Section title='Product Description' id='description'>

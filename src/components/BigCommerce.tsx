@@ -31,7 +31,7 @@ function BigCommerce() {
   useEffect(() => {
     const storedDomain = localStorage.getItem('BigCommerce_domain');
     const storedAccessToken = localStorage.getItem('BigCommerce_access_token');
-    const product = localStorage.getItem('product_id');
+    const product = localStorage.getItem('BigCommerce_product_id');
 
     if (storedDomain && storedAccessToken) {
       setDomain(storedDomain);
@@ -85,7 +85,7 @@ function BigCommerce() {
   ) => {
     const value = e.target.value;
     setProductId(value);
-    localStorage.setItem('product_id', value);
+    localStorage.setItem('BigCommerce_product_id', value);
   };
 
   return (
