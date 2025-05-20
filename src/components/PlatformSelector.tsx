@@ -64,15 +64,21 @@ const PlatformSelector = () => {
       comingSoon: false,
     },
     {
-      id: 'woocommerce',
-      name: 'WooCommerce',
+      id: 'BigCommerce',
+      name: 'BigCommerce',
       description:
-        'Connect to your WooCommerce store and visualize your WordPress shop data.',
-      icon: <ShoppingBag className='h-6 w-6' />,
-      color: 'bg-[#96588A]',
-      textColor: 'text-[#96588A]',
-      route: '/woocommerce',
-      comingSoon: true,
+        'Connect to your BigCommerce store and visualize your BigCommerce shop data.',
+      icon: (
+        <img
+          style={{ width: 60 }}
+          src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYZyqmtqSYlC6DpFKfKYxy4bw_N8Itrv3wFg&s'
+          alt=''
+        />
+      ),
+
+      textColor: 'text-[#5b5a65]',
+      route: '/Bigcommerce',
+      comingSoon: false,
     },
   ];
 

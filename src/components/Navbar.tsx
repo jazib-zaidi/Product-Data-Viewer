@@ -40,18 +40,11 @@ const Navbar = () => {
             </Button>
           </Link>
           <div className='hidden sm:flex items-center gap-1'>
-            <Button
-              variant='ghost'
-              size='sm'
-              className='opacity-60 cursor-not-allowed'
-              disabled
-            >
-              <Store className='h-4 w-4 mr-1' />
-              BigCommerce
-              <span className='ml-1 text-xs bg-muted px-1.5 py-0.5 rounded-full'>
-                Soon
-              </span>
-            </Button>
+            <Link to='/Bigcommerce' className='hidden sm:block'>
+              <Button variant='outline' size='sm'>
+                BigCommerce
+              </Button>
+            </Link>
             <Button
               variant='ghost'
               size='sm'

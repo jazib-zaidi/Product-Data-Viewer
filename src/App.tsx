@@ -7,6 +7,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 import Navbar from './components/Navbar';
 import Shopify from './components/Shopify';
+import BigCommerce from './components/BigCommerce';
 const App = () => {
   return (
     <BrowserRouter>
@@ -16,6 +17,7 @@ const App = () => {
         <Route path='/magento' element={<Magento />} />
         <Route path='/shopify' element={<Shopify />} />
         <Route path='/salesforce' element={<SalesForce />} />
+        <Route path='/BigCommerce' element={<BigCommerce />} />
       </Routes>
       <footer className='border-t py-6 md:py-8'>
         <div className='container flex flex-col items-center justify-center gap-4 text-center md:gap-8'>
