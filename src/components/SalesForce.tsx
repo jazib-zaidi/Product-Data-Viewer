@@ -4,6 +4,7 @@ import { Button } from './ui/button';
 import { Link } from 'react-router-dom';
 import ProductDisplay from './shopify/productData';
 import FullProductDetails from './salesForce/FullProductDetails';
+import { Helmet } from 'react-helmet-async';
 
 interface Product {
   id: string;
@@ -88,6 +89,9 @@ function SalesForce() {
   console.log(products);
   return (
     <div className='min-h-screen bg-gray-50'>
+      <Helmet>
+        <title>SalesForce - Product Data Viewer</title>
+      </Helmet>
       <div className='max-w-7xl mx-auto px-4 py-8'>
         <Link to={'/'}>
           <Button variant='outline' className='mb-4'>

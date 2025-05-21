@@ -3,10 +3,14 @@ import Navbar from '@/components/Navbar';
 import PlatformSelector from '@/components/PlatformSelector';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, BarChart3 } from 'lucide-react';
+import { Helmet } from 'react-helmet-async';
 
 const Home = () => {
   return (
     <div className='min-h-screen flex flex-col'>
+      <Helmet>
+        <title>DataBridge - Product Data Viewer</title>
+      </Helmet>
       <section className='py-16 md:py-24 bg-muted/30'>
         <div className='container px-4 md:px-6'>
           <div className='flex flex-col items-center justify-center space-y-4 text-center mb-10'>

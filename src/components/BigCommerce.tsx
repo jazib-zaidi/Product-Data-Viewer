@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import DynamicProductDetails from './BigCommerce/DynamicProductDetails';
 import ProductDetail from './BigCommerce/DynamicProductDetails';
 import ProductDataDisplay from './BigCommerce/DynamicProductDetails';
+import { Helmet } from 'react-helmet-async';
 // import ProductDisplay from './BigCommerce/productData';
 
 interface Product {
@@ -90,6 +91,9 @@ function BigCommerce() {
 
   return (
     <div className='min-h-screen bg-gray-50'>
+      <Helmet>
+        <title>BigCommerce - Product Data Viewer</title>
+      </Helmet>
       <div className='max-w-7xl mx-auto px-4 py-8'>
         <Link to={'/'}>
           <Button variant='outline' className='mb-4'>
