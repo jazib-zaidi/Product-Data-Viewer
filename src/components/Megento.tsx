@@ -6,6 +6,7 @@ import DescriptionTemplate from './DescriptionTemplate';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 
 function Magento() {
   const [apiKey, setApiKey] = useState('');
@@ -67,6 +68,9 @@ function Magento() {
 
   return (
     <div className='min-h-screen bg-gray-100 p-8'>
+      <Helmet>
+        <title>Magento - Product Data Viewer</title>
+      </Helmet>
       <div className='max-w-7xl mx-auto'>
         <Link to={'/'}>
           <Button variant='outline' className='mb-4'>
