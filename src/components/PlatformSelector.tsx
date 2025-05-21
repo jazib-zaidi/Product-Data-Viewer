@@ -18,7 +18,7 @@ const PlatformSelector = () => {
       id: 'shopify',
       name: 'Shopify',
       description:
-        'Connect to your Shopify store and analyze sales, customers, and products.',
+        'Connect to your Shopify store and visualize your Shopify shop data.',
       icon: (
         <img
           style={{ width: 60 }}
@@ -35,7 +35,7 @@ const PlatformSelector = () => {
       id: 'magento',
       name: 'Magento',
       description:
-        'Connect to your Magento store and get insights into your e-commerce performance.',
+        'Connect to your Magento store and visualize your Magento shop data.',
       icon: (
         <img
           style={{ width: 60 }}
@@ -50,7 +50,8 @@ const PlatformSelector = () => {
     {
       id: 'Salesforce',
       name: 'Salesforce',
-      description: 'Connect to your Salesforce store.',
+      description:
+        'Connect to your Salesforce store and visualize your Salesforce shop data.',
       icon: (
         <img
           style={{ width: 60 }}
